@@ -51,9 +51,7 @@ while True:
         tweet1 = pre_tweet
         #print(tweet1) #api.update_status(pre_tweet)
     else:
-        cut = pre_tweet.rfind(" ")
-        tweet1 = pre_tweet[:cut]
-        tweet2 = pre_tweet[cut:]
+        
 
     print(tweet1)
     if len(tweet2) > 1:
