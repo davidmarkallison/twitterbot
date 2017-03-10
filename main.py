@@ -3,15 +3,16 @@ import sys      # For command line arguments
 import os       # For directory navigation
 import re       # For String manipulation
 import time     # For sleep function
+import math
 
 # Navigating to the current file's directory
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
 # Opening the Silmarillion text file
-sim_file = open(os.path.join(__location__, 'simdog.txt'));
+#sim_file = open(os.path.join(__location__, 'simdog.txt'));
 
 # Opening the Silmarillion textfile
-#sim_file = open("simdog.txt", "r")
+sim_file = open("simdog.txt", "r")
 
 # Reading the file and setting as a string
 simdog = sim_file.read()
@@ -39,24 +40,32 @@ sim_arr = simdog.split(".")
 i = 0
 while True:
     pre_tweet = sim_arr[i]
-    tweet1 = ""
-    tweet2 = ""
-    tweet3 = ""
-    tweet4 = ""
-    tweet5 = ""
-    tweet6 = ""
+    tweets = ["","","","","",""]
 
-    # Sample method, used to update a status
-    if len(pre_tweet) < 140 and len(pre_tweet) > 1:
-        tweet1 = pre_tweet
-        #print(tweet1) #api.update_status(pre_tweet)
-    else:
-        
 
-    print(tweet1)
-    if len(tweet2) > 1:
-        print(tweet2)
-
+    pre_tweet = pre_tweet.split(" ")
+    for word in pre_tweet:
+        if len(tweets[0] + word) < 140:
+            tweets[0] += word + " "
+        elif len(tweets[1]) < 140:
+            tweets[1] += word + " "
+        elif len(tweets[2]) < 140:
+            tweets[2] += word + " "
+        elif len(tweets[3]) < 140:
+            tweets[3] += word + " "
+        elif len(tweets[4]) < 140:
+            tweets[4] += word + " "
+        elif len(tweets[5]) < 140:
+            tweets[5] += word + " "  
+    
+    for tweet in tweets:
+        if tweet == "":
+            continue
+        else:
+            #api.update_status(tweet)
+            print(tweet + "\n")
+            time.sleep(60)
+    
     i = i + 1
 
-    time.sleep(1)
+    time.sleep(3600)
