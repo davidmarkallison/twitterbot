@@ -48,14 +48,16 @@ while True:
 
     # Sample method, used to update a status
     if len(pre_tweet) < 140 and len(pre_tweet) > 1:
-        print(pre_tweet) #api.update_status(pre_tweet)
+        tweet1 = pre_tweet
+        #print(tweet1) #api.update_status(pre_tweet)
     else:
-        k = pre_tweet.rfind(" ")
-        tweet1 = pre_tweet[:k]
+        cut = pre_tweet.rfind(" ")
+        tweet1 = pre_tweet[:cut]
+        tweet2 = pre_tweet[cut:]
 
-    print(pre_tweet)
     print(tweet1)
-    print(tweet2)
+    if len(tweet2) > 1:
+        print(tweet2)
 
     i = i + 1
 
