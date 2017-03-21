@@ -37,7 +37,7 @@ auth.set_access_token(access_token, access_token_secret)
 # # Creation of the actual interface, using authentication
 api = tweepy.API(auth)
 
-i = 1
+i = 0
 while True:
     pre_tweet = sim_arr[i]
     tweets = ["","","","","",""]
@@ -45,15 +45,15 @@ while True:
 
     pre_tweet = pre_tweet.split(" ")
     for word in pre_tweet:
-        if len(tweets[0] + word + " ") < 140:
+        if len(tweets[0] + word + " ") < 140 and tweets[1] == "":
             tweets[0] += word + " "
-        elif len(tweets[1] + word + " ") < 140:
+        elif len(tweets[1] + word + " ") < 140 and tweets[2] == "":
             tweets[1] += word + " "
-        elif len(tweets[2] + word + " ") < 140:
+        elif len(tweets[2] + word + " ") < 140 and tweets[3] == "":
             tweets[2] += word + " "
-        elif len(tweets[3] + word + " ") < 140:
+        elif len(tweets[3] + word + " ") < 140 and tweets[4] == "":
             tweets[3] += word + " "
-        elif len(tweets[4] + word + " ") < 140:
+        elif len(tweets[4] + word + " ") < 140 and tweets[5] == "":
             tweets[4] += word + " "
         elif len(tweets[5] + word + " ") < 140:
             tweets[5] += word + " "  
@@ -62,7 +62,7 @@ while True:
         if tweet == "":
             continue
         else:
-            #api.update_status(tweet)
+            api.update_status(tweet)
             print(tweet + "\n")
             time.sleep(60)
     
